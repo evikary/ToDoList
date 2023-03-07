@@ -23,24 +23,24 @@
         <span class="card__title">TO DO LIST</span>
         <div class="card__conteiner">
           <div class="card__task">
+            <!-- <select></select> -->
             <ul></ul>
           </div>
           <div class="card__line"></div>
           <div class="card__form">
+            <p class="select_type">Please select the task type</p>
+            <div class="radiobuttons">
+              <input class="rad1" type="radio" value="1" id="radio_1" name="radio" checked />
+              <label for="radio_1">Personal</label>
+              <input class="rad2" type="radio" value="2" id="radio_2" name="radio" />
+              <label for="radio_2">Working</label>
+            </div>
+
             <label for="title_form"></label>
-            <input
-              type="text"
-              placeholder="Сreate a new task..."
-              id="title_form"
-            />
+            <input type="text" placeholder="Сreate a new task..." id="title_form" />
 
             <label>
-              <textarea
-                type="textarea"
-                placeholder="Description..."
-                maxlength="100"
-                id="description__form"
-              ></textarea>
+              <textarea type="textarea" placeholder="Description..." maxlength="100" id="description__form"></textarea>
             </label>
             <button>Send</button>
           </div>
