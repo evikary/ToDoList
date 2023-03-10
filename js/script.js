@@ -18,7 +18,6 @@ const sortOrder = document.querySelector('#sort');
 const hours3 = 3 * 60 * 60 * 1000;
 const hours6 = 6 * 60 * 60 * 1000;
 const dataActual = new Date();
-
 let editId = null;
 
 function displayTasks(arr = DB.task) {
@@ -33,6 +32,7 @@ function displayTasks(arr = DB.task) {
     const diff = dataD - dataActual;
     const lessThan6 = diff <= hours6 && diff > hours3 ? 'lessThan6' : '';
     const lessThan3 = diff <= hours3 ? 'lessThan3' : '';
+    const tag = item.data ? 'tag' : '';
     tasks.innerHTML += `
     <div>
       <li>
@@ -40,9 +40,9 @@ function displayTasks(arr = DB.task) {
           <input type="checkbox" class="check" ${checked} onclick ='checkTask(${item.id})'/>
           <i class="${type}"></i>
           <span class='${text} ${lessThan6} ${lessThan3}'>${item.key}</span>
-        </label><span class="tag">
-          ${item.data.split('T', 1).join('').split('-').reverse().join('.')}
-          ${item.data.split('T').reverse().join(';').split(';', 1).join('')}
+        </label><span class="${tag}">
+          ${item.data?.split('T', 1).join('').split('-').reverse().join('.') || ''}
+          ${item.data?.split('T').reverse().join(';').split(';', 1).join('') || ''}
           </span>
         <i class="fas fa-solid fa-pen edit" onclick='editTask(${item.id})'></i>
         <i class="fas fa-trash delete" onclick='deleteTask(${item.id})'></i>
@@ -172,6 +172,13 @@ sortOrder.addEventListener('change', (e) => {
 function filter(arr = DB.task) {
   const sortt = [...DB.task];
   const selectTask = sortt
+    .filter((item) => {
+      if (sortOrder.value === '7' || sortOrder.value === '8') {
+        return item.data;
+      } else {
+        return true;
+      }
+    })
     .sort((a, b) => {
       if (sortOrder.value === '6') {
         return;
