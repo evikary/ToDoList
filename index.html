@@ -23,7 +23,21 @@
         <span class="card__title">TO DO LIST</span>
         <div class="card__conteiner">
           <div class="card__task">
-            <!-- <select></select> -->
+            <select id="select_type">
+              <option value="0" selected>Select the task type</option>
+              <option value="1">Personal tasks</option>
+              <option value="2">Working tasks</option>
+            </select>
+            <select id="all">
+              <option value="3" selected>All tasks</option>
+              <option value="4">Done</option>
+              <option value="5">Not done</option>
+            </select>
+            <select id="sort">
+              <option value="6" selected>Sort tasks</option>
+              <option value="7">Ascending order</option>
+              <option value="8">Descending order</option>
+            </select>
             <ul></ul>
           </div>
           <div class="card__line"></div>
@@ -38,6 +52,7 @@
 
             <label for="title_form"></label>
             <input type="text" placeholder="Сreate a new task..." id="title_form" />
+            <input id="calendar" type="datetime-local" />
 
             <label>
               <textarea type="textarea" placeholder="Description..." maxlength="100" id="description__form"></textarea>
